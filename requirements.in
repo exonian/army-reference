@@ -1,2 +1,3 @@
 Django
-ipython
+django-ordered-model
+ipdb
