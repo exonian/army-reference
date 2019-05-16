@@ -24,3 +24,7 @@ class Reference(OrderedModel):
 
     def __str__(self):
         return self.name
+
+    @property
+    def non_default_sub_phase(self):
+        return self.sub_phase != self.DURING_SUB_PHASE

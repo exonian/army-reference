@@ -4,15 +4,9 @@
     {% regroup references by phase as phases %}
     {% for phase, references in phases %}
         <h2>{{ phase.name }} phase</h2>
-        {% for reference in references %}
-            {% ifchanged reference.sub_phase %}
-                {% if not forloop.first %}
-                    </ul>
-                {% endif %}
-                <h3>{{ reference.get_sub_phase_display }}</h3>
-                <ul>
-            {% endifchanged %}
-            <li>{{ reference.name }}</li>
+        <ul>
+        {% for ref in references %}
+        <li>{% if ref.non_default_sub_phase %}<strong>{{ ref.get_sub_phase_display }}</strong> {% endif %}{{ ref.name }}</li>
         {% endfor %}
         </ul>
     {% endfor %}
