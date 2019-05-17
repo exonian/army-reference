@@ -20,7 +20,7 @@ class Reference(OrderedModel):
     order_with_respect_to = ('phase', 'sub_phase')
 
     class Meta:
-        ordering = ['phase', 'sub_phase']
+        ordering = ['phase', 'sub_phase', 'order']
 
     def __str__(self):
         return self.name
