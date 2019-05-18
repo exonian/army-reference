@@ -1,3 +1,4 @@
 Django
+dj-database-url
 django-ordered-model
 ipdb

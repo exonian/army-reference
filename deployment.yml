@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: army-reference
+  labels:
+    app: army-reference
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: army-reference
+    spec:
+      imagePullSecrets:
+        - name: docker-credentials
+      containers:
+        - name: app
+          image: roguemichael/army-reference:5
+          ports:
+            - containerPort: 80
+              name: http
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: db
+                  key: url
+                  optional: true
+        - name: db
+          image: postgres:11.3-alpine
