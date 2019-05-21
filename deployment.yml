@@ -5,7 +5,7 @@ metadata:
   labels:
     app: army-reference
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -15,9 +15,9 @@ spec:
         - name: docker-credentials
       containers:
         - name: app
-          image: roguemichael/army-reference:5
+          image: roguemichael/army-reference:190521A
           ports:
-            - containerPort: 80
+            - containerPort: 8000
               name: http
           env:
             - name: DATABASE_URL
