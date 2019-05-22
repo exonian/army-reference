@@ -3,11 +3,9 @@ kind: Service
 metadata:
   name: army-reference
 spec:
-  type: NodePort
   ports:
     - name: http
       port: 80
       targetPort: 8000
-      nodePort: 30000
   selector:
     app: army-reference
