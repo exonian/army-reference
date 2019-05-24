@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: army-reference-ingress
@@ -6,10 +6,9 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: localhost
-    http:
+  - http:
       paths:
-      - path: /
+      - path: /*
         backend:
-          serviceName: army-reference-http
-          servicePort: 8000
+          serviceName: army-reference
+          servicePort: 80
