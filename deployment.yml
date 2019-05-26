@@ -15,10 +15,18 @@ spec:
         - name: docker-credentials
       containers:
         - name: app
-          image: roguemichael/army-reference:190526L
+          image: roguemichael/army-reference:190526M
           ports:
             - containerPort: 8000
               name: http
+          livenessProbe:
+            httpGet:
+              path: /health/
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /health/
+              port: http
           env:
             - name: SECRET_KEY
               valueFrom:
