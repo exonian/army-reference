@@ -3,10 +3,13 @@ kind: Ingress
 metadata:
   name: army-reference-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.global-static-ip-name: minis-dot-cool-ip
+    networking.gke.io/managed-certificates: minis-dot-cool-certificate
 spec:
   rules:
-  - http:
+  - host: minis.cool
+    http:
       paths:
       - path: /*
         backend:

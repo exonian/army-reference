@@ -15,7 +15,7 @@ spec:
         - name: docker-credentials
       containers:
         - name: app
-          image: roguemichael/army-reference:190522A
+          image: roguemichael/army-reference:190525A
           ports:
             - containerPort: 8000
               name: http
@@ -26,3 +26,19 @@ spec:
                   name: db
                   key: url
                   optional: true
+        - name: cloudsql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:1.11
+          command: ["/cloud_sql_proxy",
+                    "-instances=fluent-service-241519:europe-west2:minis-dot-cool=tcp:5432",
+                    "-credential_file=/secrets/cloudsql/credentials.json"]
+          securityContext:
+            runAsUser: 2  # non-root
+            allowPrivilegeEscalation: false
+          volumeMounts:
+            - name: cloudsql-instance-credentials
+              mountPath: /secrets/cloudsql
+              readOnly: true
+      volumes:
+      - name: cloudsql-instance-credentials
+        secret:
+          secretName: cloudsql-instance-credentials
