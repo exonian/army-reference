@@ -1,13 +1,19 @@
 {% extends 'references/base.html' %}
 
 {% block content %}
-    {% regroup references by phase as phases %}
-    {% for phase, references in phases %}
-        <h2>{{ phase.name }} phase</h2>
-        <ul>
-        {% for ref in references %}
-        <li>{% if ref.non_default_sub_phase %}<strong>{{ ref.get_sub_phase_display }}</strong> {% endif %}{{ ref.name }}</li>
-        {% endfor %}
-        </ul>
+  {% regroup references by phase as phases %}
+  {% for phase, references in phases %}
+    <h4>{{ phase.name }} phase</h4>
+    {% for ref in references %}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ ref.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ ref.get_sub_phase_display }}</h6>
+          {% if ref.details %}
+            <p class="card-text">{{ ref.details }}</p>
+          {% endif %}
+        </div>
+      </div>
     {% endfor %}
+  {% endfor %}
 {% endblock %}
