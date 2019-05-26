@@ -7,9 +7,9 @@ class Reference(OrderedModel):
     DURING_SUB_PHASE = 1
     END_SUB_PHASE = 2
     SUB_PHASES = (
-        (START_SUB_PHASE, 'Start'),
-        (DURING_SUB_PHASE, 'During'),
-        (END_SUB_PHASE, 'End'),
+        (START_SUB_PHASE, 'Start of phase'),
+        (DURING_SUB_PHASE, 'During phase'),
+        (END_SUB_PHASE, 'End of phase'),
     )
 
     name = models.CharField(max_length=255)
