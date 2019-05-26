@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: army-reference-ingress
   annotations:
-    kubernetes.io/ingress.allow-http: "false"
     kubernetes.io/ingress.global-static-ip-name: minis-dot-cool-ip
     networking.gke.io/managed-certificates: minis-dot-cool-certificate
 spec:
