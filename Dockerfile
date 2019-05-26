@@ -9,7 +9,11 @@ WORKDIR /code
 
 RUN pip install -r requirements.txt
 
-# TODO remove to a job
-RUN armyref/manage.py migrate
+RUN adduser -D app
+USER app
+WORKDIR /code/armyref
 
-CMD ["armyref/manage.py", "runserver", "0.0.0.0:8000"]
+# TODO remove to a job
+RUN  python manage.py migrate
+
+CMD ["gunicorn", "armyref.wsgi", "--bind=0.0.0.0:8000"]
