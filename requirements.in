@@ -1,6 +1,7 @@
 Django
 dj-database-url
 django-ordered-model
+django-storages[google]
 gunicorn
 ipdb
 psycopg2

@@ -5,7 +5,7 @@ metadata:
   labels:
     app: army-reference
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -15,7 +15,7 @@ spec:
         - name: docker-credentials
       containers:
         - name: app
-          image: roguemichael/army-reference:190526K
+          image: roguemichael/army-reference:190526L
           ports:
             - containerPort: 8000
               name: http
@@ -31,6 +31,12 @@ spec:
                   name: db
                   key: url
                   optional: true
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /secrets/cloud_storage/credentials.json
+          volumeMounts:
+            - name: google-cloud-credentials
+              mountPath: /secrets/cloud_storage
+              readOnly: true
         - name: cloudsql-proxy
           image: gcr.io/cloudsql-docker/gce-proxy:1.11
           command: ["/cloud_sql_proxy",
@@ -40,10 +46,10 @@ spec:
             runAsUser: 2  # non-root
             allowPrivilegeEscalation: false
           volumeMounts:
-            - name: cloudsql-instance-credentials
+            - name: google-cloud-credentials
               mountPath: /secrets/cloudsql
               readOnly: true
       volumes:
-      - name: cloudsql-instance-credentials
+      - name: google-cloud-credentials
         secret:
-          secretName: cloudsql-instance-credentials
+          secretName: google-cloud-credentials
