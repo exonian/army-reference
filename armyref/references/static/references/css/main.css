@@ -1,0 +1,7 @@
+[data-toggle="collapse"] .fas:before {
+  content: "\f146";
+}
+
+[data-toggle="collapse"].collapsed .fas:before {
+  content: "\f0fe";
+}
