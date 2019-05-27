@@ -13,7 +13,4 @@ RUN adduser -D app
 USER app
 WORKDIR /code/armyref
 
-# TODO remove to a job
-RUN  python manage.py migrate
-
 CMD ["gunicorn", "armyref.wsgi", "--bind=0.0.0.0:8000"]
