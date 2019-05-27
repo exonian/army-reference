@@ -15,7 +15,7 @@ spec:
         - name: docker-credentials
       containers:
         - name: app
-          image: roguemichael/army-reference:190527A
+          image: roguemichael/army-reference:190527B
           ports:
             - containerPort: 8000
               name: http

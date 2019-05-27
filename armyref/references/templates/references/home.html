@@ -4,14 +4,14 @@
   {% regroup references by phase as phases %}
   {% for phase, references in phases %}
     <h4 data-toggle="collapse" data-target="#phase-{{ phase.id }}" aria-expanded="true" aria-controls="phase-{{ phase.id }}">{{ phase.name }} phase
-        <span class="fas" aria-hidden="true"></span></h4>
+        <span class="fas float-right text-muted small" aria-hidden="true"></span></h4>
     <div class="collapse show" id="phase-{{ phase.id }}">
       <div class="card-columns">
         {% for ref in references %}
           <div class="reference card {% if ref.sub_phase == 0 %}border-info{% endif %}{% if ref.sub_phase == 2 %}border-danger{% endif %}">
             <h5 class="card-header {% if ref.sub_phase == 0 %}text-info{% endif %}{% if ref.sub_phase == 2 %}text-danger{% endif %}"
                 data-toggle="collapse" data-target="#card-body-{{ ref.id }}" aria-expanded="true" aria-controls="card-body-{{ ref.id }}">{{ ref.name }}
-                <span class="fas float-right" aria-hidden="true"></span></h5>
+                <span class="fas float-right small" aria-hidden="true"></span></h5>
             <div class="collapse show" id="card-body-{{ ref.id }}">
               <div class="card-body">
                 {% if ref.details %}
