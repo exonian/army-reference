@@ -113,6 +113,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
-GS_BUCKET_NAME = 'minis-dot-cool-army-reference'
-DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+if DEBUG:
+    STATIC_URL = '/static/'
+else:
+    GS_BUCKET_NAME = 'minis-dot-cool-army-reference'
+    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+    STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
