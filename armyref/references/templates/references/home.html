@@ -1,5 +1,7 @@
 {% extends 'references/base.html' %}
 
+{% load markdownify %}
+
 {% block content %}
   {% regroup references by phase as phases %}
   {% for phase, references in phases %}
@@ -15,7 +17,7 @@
             <div class="collapse show" id="card-body-{{ ref.id }}">
               <div class="card-body">
                 {% if ref.details %}
-                  <p class="card-text">{{ ref.details }}</p>
+                  <p class="card-text">{{ ref.details|markdownify }}</p>
                 {% endif %}
               </div>
             </div>

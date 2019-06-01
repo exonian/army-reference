@@ -1,5 +1,6 @@
 Django
 dj-database-url
+django-markdownify
 django-ordered-model
 django-storages[google]
 gunicorn

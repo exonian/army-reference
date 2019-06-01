@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'references',
     'armies',
 
+    'markdownify',
     'ordered_model',
 
     'django.contrib.admin',
