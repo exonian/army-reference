@@ -1,3 +1,11 @@
+[data-toggle="collapse"] {
+  cursor: pointer;
+}
+
+.reference h5:hover {
+  text-decoration: underline;
+}
+
 [data-toggle="collapse"] .fas:before {
   content: "\f146";
 }
