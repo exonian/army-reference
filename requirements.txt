@@ -14,7 +14,7 @@ dj-database-url==0.5.0
 django-markdownify==0.8.0
 django-ordered-model==3.1.1
 django-storages[google]==1.7.1
-django==2.2.1
+django==2.2.8
 google-api-core==1.11.0   # via google-cloud-core, google-cloud-storage
 google-auth==1.6.3        # via google-api-core, google-cloud-storage
 google-cloud-core==1.0.0  # via google-cloud-storage
